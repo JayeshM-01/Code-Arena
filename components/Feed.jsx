@@ -21,24 +21,44 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+  const [search_posts, setSearch_posts] = useState([]);
 
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
-  }
-
+  
   useEffect(() => {
     const fetchPosts = async () =>{
       const response=await fetch('/api/prompt');
       const data = await response.json();
-
+      
       setPosts(data);
     }
-
+    
     fetchPosts();
     
   }, [])
   
+  const handleSearchChange = (e) => {
+    const text=e.target.value;
+    setSearchText(text);
+
+    if(e.target.value){
+      const filtered_posts = posts.filter(post => 
+        (post.creator.username.toLowerCase().includes(text.toLowerCase()) || 
+        post.creator.email.includes(text.toLowerCase()) || 
+        post.prompt.toLowerCase().includes(text.toLowerCase()) || 
+        post.tag.toLowerCase().includes(text.toLowerCase()))
+      );
+      setSearch_posts(filtered_posts);
+    }
+  }
+
+  const handleTagClick = (tagName) => {
+    setSearchText(tagName);
+
+    const filtered_posts = posts.filter(post => post.tag.toLowerCase().includes(tagName.toLowerCase()));
+
+    setSearch_posts(filtered_posts);
+  };
 
   return (
     <section className='feed'>
@@ -52,11 +72,19 @@ const Feed = () => {
           className='search_input peer'
         />
       </form>
-
-      <PromptCardList
+      
+      {searchText ? (
+        <PromptCardList
+          data={search_posts}
+          handleTagClick={handleTagClick}
+        />
+      ):(
+        <PromptCardList
           data={posts}
-          handleTagClick={()=>{}}
-      />
+          handleTagClick={handleTagClick}
+        />
+      )}
+      
     </section>
   )
 }
