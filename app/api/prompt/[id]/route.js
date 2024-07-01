@@ -25,21 +25,21 @@ export const PATCH = async (request,{params}) => {
     try {
         await connectToDB();
 
-        // const existingPrompt =await Prompt.findById(params.id);
-        const existingPrompt = await Prompt.findByIdAndUpdate(
-            params.id,
-            { prompt, tag },
-            { new: true } // Return the updated document
-        );
+        const existingPrompt =await Prompt.findById(params.id);
+        // const existingPrompt = await Prompt.findByIdAndUpdate(
+        //     params.id,
+        //     { prompt, tag },
+        //     { new: true } // Return the updated document
+        // );
 
         if (!existingPrompt) {
             return new Response("Prompt not found", { status: 404 });
         }
         
-        // existingPrompt.prompt = prompt;
-        // existingPrompt.tag = tag;
+        existingPrompt.prompt = prompt;
+        existingPrompt.tag = tag;
 
-        // await existingPrompt.save();
+        await existingPrompt.save();
 
         return new Response("Successfully updated the Prompts", { status: 200 });
     } catch (error) {
