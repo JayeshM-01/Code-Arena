@@ -42,7 +42,7 @@ const UserProfile = ({params}) => {
 
   return (
     <Profile
-        name={`${user?.username}'s`}
+        name={`${user ? user?.username:'User'}'s`}
         desc='Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination'
         data={posts}
     />
