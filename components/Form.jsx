@@ -7,14 +7,13 @@ const Form = ({type,post,setPost,submitting,handleSubmit}) => {
         <span className='blue_gradient'>{type} Post</span>
       </h1>
       <p className='desc text-left max-w-md'>
-        {type} and share amazing prompts with the world, and let your
-        imagination run wild with any AI-powered platform
+        {type} and share amazing coding tips with the world, and let your creativity run wild with our collaborative platform.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism">
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your AI Prompt
+            Your Coding Tip
           </span>
 
           <textarea
@@ -22,7 +21,7 @@ const Form = ({type,post,setPost,submitting,handleSubmit}) => {
             onChange={(e)=> setPost({...post,
               prompt:e.target.value
             })}
-            placeholder="Write your prompt"
+            placeholder="Write your post"
             required
             className="form_textarea"
           />
@@ -30,7 +29,7 @@ const Form = ({type,post,setPost,submitting,handleSubmit}) => {
 
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Field of Prompt{" "}
+          Category{" "}
             <span className='font-normal'>
               (#product, #webdevelopment, #idea, etc.)
             </span>
@@ -55,7 +54,7 @@ const Form = ({type,post,setPost,submitting,handleSubmit}) => {
             disabled={submitting}
             className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
           >
-              {submitting ? `${type}ing`: type}
+              {submitting ? `${type}...`: type}
           </button>
         </div>
       </form>

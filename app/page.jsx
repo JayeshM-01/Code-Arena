@@ -6,11 +6,10 @@ const Home = () => {
         <h1 className="head_text text-center">
             Discover & Share
             <br className="max-md:hidden"/>
-            <span className="orange_gradient">AI-Powered Prompts</span>
+            <span className="orange_gradient">Coding Tips & Tricks</span>
         </h1>
         <p className='desc text-center'>
-            Promptopia is an open-source AI prompting tool for modern world to
-            discover, create and share creative prompts
+              <span><b>Welcome to Code Arena:</b></span> Your go-to platform for sharing and discovering the best coding tips and tricks from developers around the world.
         </p>
 
         <Feed />
