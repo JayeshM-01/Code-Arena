@@ -1,5 +1,7 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
+export const dynamic = 'force-dynamic';
+
 // import { getServerSession } from "next-auth";
 
 export const GET = async (request) =>{
