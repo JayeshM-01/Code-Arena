@@ -9,7 +9,7 @@ export const GET = async (request) =>{
 
         const prompts= await Prompt.find({}).populate('creator');
         // const userEmail= session?.user.email;
-        // console.log(userEmail);
+        console.log(prompts);
         // const prompts = prompt.filter(prompt=>prompt.creator.email===userEmail)
 
         return new Response(JSON.stringify(prompts),{status:200})
