@@ -7,7 +7,8 @@ export const GET = async (request) =>{
         await connectToDB();
         // const session = await getServerSession();
 
-        const prompts= await Prompt.find({}).populate('creator');
+        // const prompts= await Prompt.find({}).populate('creator');
+        const prompts = await Prompt.find({});
         // const userEmail= session?.user.email;
         console.log(prompts);
         // const prompts = prompt.filter(prompt=>prompt.creator.email===userEmail)
